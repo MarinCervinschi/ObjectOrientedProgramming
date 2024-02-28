@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/arrays/BubbleSort/BubbleSort.iml" filepath="$PROJECT_DIR$/arrays/BubbleSort/BubbleSort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/CopyArray/CopyArray.iml" filepath="$PROJECT_DIR$/arrays/CopyArray/CopyArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/DivideArray/DivideArray.iml" filepath="$PROJECT_DIR$/arrays/DivideArray/DivideArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/DivideArrays/DivideArrays.iml" filepath="$PROJECT_DIR$/arrays/DivideArrays/DivideArrays.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/EXERCISES.iml" filepath="$PROJECT_DIR$/.idea/EXERCISES.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/Fibonacci/Fibonacci.iml" filepath="$PROJECT_DIR$/arrays/Fibonacci/Fibonacci.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/FillArray/FillArray.iml" filepath="$PROJECT_DIR$/arrays/FillArray/FillArray.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays/MoveZeroEnd/MoveZeroEnd.iml" filepath="$PROJECT_DIR$/arrays/MoveZeroEnd/MoveZeroEnd.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrays0/arrays0.iml" filepath="$PROJECT_DIR$/arrays0/arrays0.iml" />
+    </modules>
+  </component>
+</project>
