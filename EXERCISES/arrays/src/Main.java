@@ -96,6 +96,39 @@ public class Main {
         System.out.println();
 
 
+        // Splitter
+        System.out.println("Splitter:");
+        printArrInt(Splitter.splitter(123));
+        printArrInt(Splitter.splitter(321));
+        System.out.println();
+
+        // IsEverywhere
+//        System.out.println("IsEverywhere:");
+//        System.out.println();
+
+        // TenRun
+//        System.out.println("TenRun:");
+//        System.out.println();
+
+        // FizzBuzz
+//        System.out.println("FizzBuzz:");
+//        System.out.println();
+//
+//        // MatchUp
+//        System.out.println("MatchUp:");
+//        System.out.println();
+//
+//        // CanBalance
+//        System.out.println("CanBalance:");
+//        System.out.println();
+//
+//        // SearchArray
+//        System.out.println("Splitter:");
+//        System.out.println();
+//
+//        // DeepCopy
+//        System.out.println("DeepCopy:");
+//        System.out.println();
 
 
 
