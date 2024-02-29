@@ -5,6 +5,6 @@ public class RemoveFirstTwoChars {
         }
         StringBuilder sb = new StringBuilder();
         sb.append(string);
-        return sb.substring(2, string.length() - 1);
+        return sb.substring(2);
     }
 }
