@@ -72,7 +72,7 @@ public class RationalNumber {
     public RationalNumber add(RationalNumber o) {
         int den = leastCommonMultiple(denominator, o.getDenominator());
         int num = (den / denominator * numerator) +
-                (den / o.denominator * o.getDenominator());
+                (den / o.denominator * o.getNumerator());
         return new RationalNumber(num, den);
     }
 
