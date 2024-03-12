@@ -25,7 +25,7 @@ public class PhoneBookList implements PhoneBook{
     public Person[] searchByLastname(String lastname) {
         ArrayList<Person> ans = new ArrayList<>();
         for (Person person : phoneBook) {
-            if (person.lastname.equals(lastname)) {
+            if (person.getLastname().equals(lastname)) {
                 ans.add(person);
             }
         }
@@ -35,7 +35,7 @@ public class PhoneBookList implements PhoneBook{
     public Person[] searchByNameAndLastname(String name, String lastname) {
         ArrayList<Person> ans = new ArrayList<>();
         for (Person person : phoneBook) {
-            if (person.lastname.equals(lastname) && person.name.equals(name)) {
+            if (person.getLastname().equals(lastname) && person.getName().equals(name)) {
                 ans.add(person);
             }
         }

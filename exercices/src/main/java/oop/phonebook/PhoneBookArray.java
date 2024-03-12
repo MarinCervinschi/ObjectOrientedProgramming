@@ -38,10 +38,10 @@ public class PhoneBookArray implements PhoneBook {
             if (person == null) {
                 break;
             }
-            if (name != null && (person.lastname.equals(lastname) && person.name.equals(name))) {
+            if (name != null && (person.getLastname().equals(lastname) && person.getName().equals(name))) {
                 count++;
-            } else if (!person.name.equals(name)) {
-                if (person.lastname.equals(lastname)) {
+            } else if (!person.getName().equals(name)) {
+                if (person.getLastname().equals(lastname)) {
                     count++;
                 }
             }
@@ -56,7 +56,7 @@ public class PhoneBookArray implements PhoneBook {
             if (person == null) {
                 break;
             }
-            if (person.lastname.equals(lastname)) {
+            if (person.getLastname().equals(lastname)) {
                 ans[j++] = person;
             }
         }
@@ -70,7 +70,7 @@ public class PhoneBookArray implements PhoneBook {
             if (person == null) {
                 break;
             }
-            if (person.lastname.equals(lastname) && person.name.equals(name)) {
+            if (person.getLastname().equals(lastname) && person.getName().equals(name)) {
                 ans[j++] = person;
             }
         }

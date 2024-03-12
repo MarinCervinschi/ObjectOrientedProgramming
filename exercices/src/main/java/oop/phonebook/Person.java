@@ -7,9 +7,9 @@ public class Person {
     String name;
     String phone;
     public Person(String name, String lastname, String phone) {
-        this.lastname = lastname;
-        this.name = name;
-        this.phone = phone;
+        setLastname(lastname);
+        setName(name);
+        setPhone(phone);
     }
 
     public String getLastname() {
