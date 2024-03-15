@@ -6,23 +6,12 @@ public abstract class AbstractBankAccount implements BankAccount{
     protected double interestRate;
     protected double operationFee;
     public AbstractBankAccount(String IBAN, double balance, double interestRate, double operationFee) {
+        this.balance = balance;
+        this.interestRate = interestRate;
         setIBAN(IBAN);
-        setBalance(balance);
-        setInterestRate(interestRate);
         setOperationFee(operationFee);
     }
 
-    @Override
-    public void addInterest() {
-        setBalance(getBalance() * getInterestRate());
-    }
-
-    protected void applyFee() {
-        setBalance(getBalance() + getOperationFee());
-    }
-    protected void checkIBAN(String IBAN) {
-        return;
-    }
     @Override
     public String getIBAN() {
         return IBAN;
@@ -30,9 +19,9 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     @Override
     public void setIBAN(String IBAN) {
+        checkIBAN(IBAN);
         this.IBAN = IBAN;
     }
-
     @Override
     public double getBalance() {
         return balance;
@@ -60,12 +49,15 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     @Override
     public void setOperationFee(double operationFee) {
+        if (operationFee < 0.0) {
+            throw new IllegalArgumentException("Invalid negative fee");
+        }
         this.operationFee = operationFee;
     }
 
     @Override
     public void deposit(double amount) {
-        setBalance(getBalance() + amount);
+        balance += amount;
     }
 
     @Override
@@ -74,9 +66,27 @@ public abstract class AbstractBankAccount implements BankAccount{
         other.deposit(amount);
         return amount;
     }
+
     @Override
     public double withdraw(double amount) {
-        setBalance(getBalance() - amount);
+        balance -= amount;
         return amount;
+    }
+
+    @Override
+    public void addInterest() {
+        balance += balance * interestRate;
+    }
+    protected void applyFee() {
+        balance -= operationFee;
+    }
+    protected void checkIBAN(String IBAN) {
+        if (IBAN.length() < 8 || IBAN.length() > 34) {
+            throw new IllegalArgumentException("Invalid length");
+        }
+        String countryCode = IBAN.substring(0, 2);
+        if (!(Character.isUpperCase(countryCode.charAt(0)) && Character.isUpperCase(countryCode.charAt(1)))) {
+            throw new IllegalArgumentException("Invalid country code");
+        }
     }
 }
