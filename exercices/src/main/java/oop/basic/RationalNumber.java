@@ -15,7 +15,7 @@ public class RationalNumber {
      * @param b the second number
      * @return the gcd
      */
-    static int greatestCommonDivisor(int a, int b) {
+    private static int greatestCommonDivisor(int a, int b) {
         int max = Math.max(a, b);
         int min = Math.min(a, b);
 
@@ -33,7 +33,7 @@ public class RationalNumber {
      * @param b the second number
      * @return the lcm
      */
-    static int leastCommonMultiple(int a, int b) {
+    private static int leastCommonMultiple(int a, int b) {
         return Math.abs(a * b) / greatestCommonDivisor(a, b);
     }
 

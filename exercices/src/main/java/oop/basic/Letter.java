@@ -4,9 +4,9 @@ package oop.basic;
  * A class for authoring a simple letter.
  */
 public class Letter {
-    String from;
-    String to;
-    StringBuilder lines = new StringBuilder();
+    final String from;
+    final String to;
+    final StringBuilder lines = new StringBuilder();
 
     /**
      * Set the names of the sender and the recipient.

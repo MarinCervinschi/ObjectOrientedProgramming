@@ -4,11 +4,12 @@ import java.util.ArrayList;
 
 public class PhoneBookList implements PhoneBook{
     static final int MAX_PERSONS = 256;
-    ArrayList<Person> phoneBook;
+    final ArrayList<Person> phoneBook;
     public PhoneBookList() {
         phoneBook = new ArrayList<>();
     }
 
+    @Override
     public boolean addPerson(Person p) {
         if (phoneBook.size() >= MAX_PERSONS) {
             return false;
@@ -18,10 +19,12 @@ public class PhoneBookList implements PhoneBook{
             return phoneBook.add(p);
         }
     }
+    @Override
     public boolean removePerson(Person p) {
         return phoneBook.remove(p);
     }
 
+    @Override
     public Person[] searchByLastname(String lastname) {
         ArrayList<Person> ans = new ArrayList<>();
         for (Person person : phoneBook) {
@@ -32,6 +35,7 @@ public class PhoneBookList implements PhoneBook{
         return ans.toArray(new Person[0]);
     }
 
+    @Override
     public Person[] searchByNameAndLastname(String name, String lastname) {
         ArrayList<Person> ans = new ArrayList<>();
         for (Person person : phoneBook) {

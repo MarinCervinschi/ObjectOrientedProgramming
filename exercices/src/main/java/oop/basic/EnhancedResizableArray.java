@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class EnhancedResizableArray {
     static final int DEFAULT_CAPACITY = 4;
-    int[] v;
+    private int[] v;
 
     /**
      * Creating an empty resizable array (the underlying int[] has a default capacity of 4 items).

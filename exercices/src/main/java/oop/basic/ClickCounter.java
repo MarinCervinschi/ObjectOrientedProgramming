@@ -4,7 +4,7 @@ package oop.basic;
  * A class ClickCounter to keep track of how many times a button is clicked.
  */
 public class ClickCounter {
-    int count = 0;
+    private int count = 0;
 
     /**
      *

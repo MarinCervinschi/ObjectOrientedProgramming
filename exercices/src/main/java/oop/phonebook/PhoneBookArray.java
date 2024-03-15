@@ -2,11 +2,12 @@ package oop.phonebook;
 
 public class PhoneBookArray implements PhoneBook {
     static final int MAX_PERSONS = 256;
-    Person[] phoneBook;
+    final Person[] phoneBook;
     public PhoneBookArray() {
         phoneBook = new Person[MAX_PERSONS];
     }
 
+    @Override
     public boolean addPerson(Person p) {
         for (int i = 0; i < phoneBook.length; i++) {
             if (phoneBook[i] != null && phoneBook[i].equals(p)) {
@@ -19,6 +20,7 @@ public class PhoneBookArray implements PhoneBook {
         return false;
     }
 
+    @Override
     public boolean removePerson(Person p) {
         for (int i = 0; i < phoneBook.length; i++) {
             if (phoneBook[i] == null) {
@@ -49,6 +51,7 @@ public class PhoneBookArray implements PhoneBook {
         }
         return count;
     }
+    @Override
     public Person[] searchByLastname(String lastname) {
         Person[] ans = new Person[countPerson(lastname, null)];
         int j = 0;
@@ -63,6 +66,7 @@ public class PhoneBookArray implements PhoneBook {
         return ans;
     }
 
+    @Override
     public Person[] searchByNameAndLastname(String name, String lastname) {
         Person[] ans = new Person[countPerson(lastname, name)];
         int j = 0;

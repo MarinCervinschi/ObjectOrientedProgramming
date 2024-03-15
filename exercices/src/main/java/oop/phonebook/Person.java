@@ -3,9 +3,9 @@ package oop.phonebook;
 import java.util.Objects;
 
 public class Person {
-    String lastname;
-    String name;
-    String phone;
+    private String lastname;
+    private String name;
+    private String phone;
     public Person(String name, String lastname, String phone) {
         setLastname(lastname);
         setName(name);

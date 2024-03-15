@@ -4,7 +4,7 @@ package oop.basic;
  * A class representing a bank account.
  */
 public class BankAccount {
-    double balance;
+    private double balance;
 
     /**
      * Creating an empty account.
