@@ -368,8 +368,8 @@ class AbstractBankAccount {
   + setIBAN(String) void
   + setInterestRate(double) void
   + setOperationFee(double) void
-  + transfer(BankAccount, double) double
-  + withdraw(double) double
+  + transfer(BankAccount, double) void
+  + withdraw(double) void
 }
 class BankAccount {
   <<Interface>>
@@ -383,18 +383,18 @@ class BankAccount {
   + setIBAN(String) void
   + setInterestRate(double) void
   + setOperationFee(double) void
-  + transfer(BankAccount, double) double
-  + withdraw(double) double
+  + transfer(BankAccount, double) void
+  + withdraw(double) void
 }
 class BankAccountEasy {
   + BankAccountEasy(String, double)
-  + transfer(BankAccount, double) double
-  + withdraw(double) double
+  + transfer(BankAccount, double) void
+  + withdraw(double) void
 }
 class BankAccountPro {
   + BankAccountPro(String, double)
   + deposit(double) void
-  + withdraw(double) double
+  + withdraw(double) void
 }
 
 AbstractBankAccount  ..>  BankAccount

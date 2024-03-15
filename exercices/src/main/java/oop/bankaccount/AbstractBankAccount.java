@@ -61,16 +61,14 @@ public abstract class AbstractBankAccount implements BankAccount{
     }
 
     @Override
-    public double transfer(BankAccount other, double amount) {
+    public void transfer(BankAccount other, double amount) {
         withdraw(amount);
         other.deposit(amount);
-        return amount;
     }
 
     @Override
-    public double withdraw(double amount) {
+    public void withdraw(double amount) {
         balance -= amount;
-        return amount;
     }
 
     @Override

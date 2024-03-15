@@ -10,8 +10,8 @@ public class BankAccountPro extends AbstractBankAccount {
         super.deposit(amount);
     }
     @Override
-    public double withdraw(double amount) {
+    public void withdraw(double amount) {
         applyFee();
-        return super.withdraw(amount);
+        super.withdraw(amount);
     }
 }

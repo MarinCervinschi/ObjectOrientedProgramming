@@ -11,6 +11,6 @@ public interface BankAccount {
     public void setIBAN(String iban);
     public void setInterestRate(double interestRate);
     public void setOperationFee(double fee);
-    public double transfer(BankAccount bankAccount, double amount);
-    public double withdraw(double amount);
+    public void transfer(BankAccount bankAccount, double amount);
+    public void withdraw(double amount);
 }
