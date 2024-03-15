@@ -1,16 +1,16 @@
 package oop.bankaccount;
 
 public interface BankAccount {
-    public void addInterest();
-    public void deposit(double amount);
-    public double getBalance();
-    public String getIBAN();
-    public double getInterestRate();
-    public double getOperationFee();
-    public void setBalance(double balance);
-    public void setIBAN(String iban);
-    public void setInterestRate(double interestRate);
-    public void setOperationFee(double fee);
-    public void transfer(BankAccount bankAccount, double amount);
-    public void withdraw(double amount);
+    void addInterest();
+    void deposit(double amount);
+    double getBalance();
+    String getIBAN();
+    double getInterestRate();
+    double getOperationFee();
+    void setBalance(double balance);
+    void setIBAN(String iban);
+    void setInterestRate(double interestRate);
+    void setOperationFee(double fee);
+    void transfer(BankAccount bankAccount, double amount);
+    void withdraw(double amount);
 }
