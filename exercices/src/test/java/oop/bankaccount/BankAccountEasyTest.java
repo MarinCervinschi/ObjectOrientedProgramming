@@ -10,6 +10,7 @@ class BankAccountEasyTest {
     @Test
     void withdraw() {
         BankAccountEasy ba = new BankAccountEasy("IT0000012345", 1000);
+        ba.withdraw(2000);
         assertEquals(1000, ba.withdraw(2000));
         assertEquals(0, ba.getBalance());
     }
