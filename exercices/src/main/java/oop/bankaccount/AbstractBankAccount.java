@@ -1,11 +1,15 @@
 package oop.bankaccount;
 
-public abstract class AbstractBankAccount implements BankAccount{
+public abstract class AbstractBankAccount implements BankAccount {
     protected String IBAN;
+
     protected double balance;
-    protected double interestRate;
+
     protected double operationFee;
-    public AbstractBankAccount(String IBAN, double balance, double interestRate, double operationFee) {
+
+    protected double interestRate;
+
+    public AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate) {
         this.balance = balance;
         this.interestRate = interestRate;
         setIBAN(IBAN);
@@ -19,9 +23,10 @@ public abstract class AbstractBankAccount implements BankAccount{
 
     @Override
     public void setIBAN(String IBAN) {
-        checkIBAN(IBAN);
+        BankAccount.checkIBAN(IBAN);
         this.IBAN = IBAN;
     }
+
     @Override
     public double getBalance() {
         return balance;
@@ -30,16 +35,6 @@ public abstract class AbstractBankAccount implements BankAccount{
     @Override
     public void setBalance(double balance) {
         this.balance = balance;
-    }
-
-    @Override
-    public double getInterestRate() {
-        return interestRate;
-    }
-
-    @Override
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
     }
 
     @Override
@@ -56,35 +51,40 @@ public abstract class AbstractBankAccount implements BankAccount{
     }
 
     @Override
+    public double getInterestRate() {
+        return interestRate;
+    }
+
+    @Override
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
+
+    @Override
     public void deposit(double amount) {
         balance += amount;
     }
 
     @Override
-    public void transfer(BankAccount other, double amount) {
-        withdraw(amount);
-        other.deposit(amount);
+    public double withdraw(double amount) {
+        balance -= amount;
+        return amount;
     }
 
     @Override
-    public void withdraw(double amount) {
-        balance -= amount;
+    public double transfer(BankAccount other, double amount) {
+        withdraw(amount);
+        other.deposit(amount);
+        return amount;
     }
 
     @Override
     public void addInterest() {
         balance += balance * interestRate;
     }
-    protected void applyFee() {
+
+    @Override
+    public void applyFee() {
         balance -= operationFee;
-    }
-    protected void checkIBAN(String IBAN) {
-        if (IBAN.length() < 8 || IBAN.length() > 34) {
-            throw new IllegalArgumentException("Invalid length");
-        }
-        String countryCode = IBAN.substring(0, 2);
-        if (!(Character.isUpperCase(countryCode.charAt(0)) && Character.isUpperCase(countryCode.charAt(1)))) {
-            throw new IllegalArgumentException("Invalid country code");
-        }
     }
 }

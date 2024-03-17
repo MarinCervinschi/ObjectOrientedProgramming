@@ -2,7 +2,7 @@ package oop.bankaccount;
 
 public class BankAccountPro extends AbstractBankAccount {
     public BankAccountPro(String IBAN, double balance) {
-        super(IBAN, balance, 0.02, 1);
+        super(IBAN, balance, 1, 0.02);
     }
     @Override
     public void deposit(double amount) {
@@ -10,8 +10,8 @@ public class BankAccountPro extends AbstractBankAccount {
         super.deposit(amount);
     }
     @Override
-    public void withdraw(double amount) {
+    public double withdraw(double amount) {
         applyFee();
-        super.withdraw(amount);
+        return super.withdraw(amount);
     }
 }

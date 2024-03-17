@@ -1,5 +1,7 @@
 package oop.phonebook;
 
+import java.util.Arrays;
+
 public class PhoneBookArray implements PhoneBook {
     static final int MAX_PERSONS = 256;
     final Person[] phoneBook;
@@ -33,27 +35,9 @@ public class PhoneBookArray implements PhoneBook {
         }
         return false;
     }
-
-    private int countPerson(String lastname, String name) {
-        int count = 0;
-        for (Person person : phoneBook) {
-            if (person == null) {
-                break;
-            }
-            if (name != null && (person.getLastname().equals(lastname) && person.getName().equals(name))) {
-                count++;
-            } else if (!person.getName().equals(name)) {
-                if (person.getLastname().equals(lastname)) {
-                    count++;
-                }
-            }
-
-        }
-        return count;
-    }
     @Override
     public Person[] searchByLastname(String lastname) {
-        Person[] ans = new Person[countPerson(lastname, null)];
+        Person[] ans = new Person[MAX_PERSONS];
         int j = 0;
         for (Person person : phoneBook) {
             if (person == null) {
@@ -63,12 +47,12 @@ public class PhoneBookArray implements PhoneBook {
                 ans[j++] = person;
             }
         }
-        return ans;
+        return Arrays.copyOf(ans, j);
     }
 
     @Override
     public Person[] searchByNameAndLastname(String name, String lastname) {
-        Person[] ans = new Person[countPerson(lastname, name)];
+        Person[] ans = new Person[MAX_PERSONS];
         int j = 0;
         for (Person person : phoneBook) {
             if (person == null) {
@@ -78,7 +62,7 @@ public class PhoneBookArray implements PhoneBook {
                 ans[j++] = person;
             }
         }
-        return ans;
+        return Arrays.copyOf(ans, j);
     }
 
 }

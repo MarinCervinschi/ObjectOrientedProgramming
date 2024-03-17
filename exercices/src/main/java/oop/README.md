@@ -1,4 +1,4 @@
-# Object Oriented Programming - DIEF/UNIMORE
+# Object-Oriented Programming - DIEF/UNIMORE
 
 ## Java Exercises (OOP Design)
 
@@ -9,7 +9,7 @@ In IntelliJ, click on the oop package then select Tools -> Generate JavaDoc...
 ---
 
 **[basic.ClickCounter]** Write a class named ClickCounter representing a simple device to keep track of how many times a button (in this case a method) is clicked.
-Internally, the class represents the number of clicks with an int value.
+Internally, the class represents the number of clicks with an int value (starting from 0).
 The class provides the following methods:
 * public int getValue() returning the current number of clicks.
 * public void click() increasing the number of clicks of 1 unit.
@@ -20,15 +20,13 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class ClickCounter {
-    ~ int value
-    + ClickCounter()
-    + getValue() int
-    + click() void
-    + undo() void
-    + reset() void
-}
+    class ClickCounter {
+        -int value
+        +int getValue()
+        +void click()
+        +void undo()
+        +void reset()
+    }
 ```
 
 ---
@@ -38,16 +36,16 @@ RationalNumbers are immutable objects, indeed they cannot be changed after creat
 Internally, the class represents numerator and denominator as int values. RationalNumbers must support equality with other RationalNumbers (see Object.equals(), Object.hashCode()) 
 The class provides the following methods:
 * public RationalNumber(int numerator, int denominator) creating the rational number. Before creating the object, numerator and denominator have to be simplified (i.e., divided by their greatest common divisor). 
-* public getNumerator() returning the numerator.
-* public getDenominator() returning the denominator.
+* public int getNumerator() returning the numerator.
+* public int getDenominator() returning the denominator.
 * public RationalNumber add(RationalNumber o) returning a RationalNumber object representing the sum of the current number and another number. 
 * public RationalNumber multiply(RationalNumber o) returning a RationalNumber object representing the multiplication of the current number and another number.
 * public String toString().
 
-You can use the following two methods for computing the least common multiple and the greatest common divisor of two integer numbers. These methods are not part of the public interface of the class.
+You can use the following two methods for computing the least common multiple and the greatest common divisor of two integer numbers.
 
 ```
-static int greatestCommonDivisor(int a, int b) {
+public static int greatestCommonDivisor(int a, int b) {
     int max = Math.max(a, b);
     int min = Math.min(a, b);
 
@@ -59,7 +57,7 @@ static int greatestCommonDivisor(int a, int b) {
     }
 }
 
-static int leastCommonMultiple(int a, int b) {
+public static int leastCommonMultiple(int a, int b) {
     return Math.abs(a * b) / greatestCommonDivisor(a, b);
 }
 ```
@@ -68,21 +66,20 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class RationalNumber {
-  ~ int denominator
-  ~ int numerator
-  + RationalNumber(int, int) 
-  + getNumerator() int
-  + getDenominator() int
-  + add(RationalNumber) RationalNumber
-  + multiply(RationalNumber) RationalNumber
-  ~ leastCommonMultiple(int, int) int
-  ~ greatestCommonDivisor(int, int) int
-  + equals(Object) boolean
-  + hashCode() int
-  + toString() String
-}
+    class RationalNumber {
+        -final int numerator
+        -final int denominator
+        +RationalNumber(int numerator, int denominator)
+        +int getNumerator()
+        +int getDenominator()
+        +RationalNumber add(RationalNumber o)
+        +RationalNumber multiply(RationalNumber o)
+        +static int greatestCommonDivisor(int a, int b)
+        +static int leastCommonMultiple(int a, int b)
+        +boolean equals(Object o)
+        +int hashCode()
+        +String toString()
+    }
 ```
 
 ---
@@ -102,21 +99,20 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class Circle {
-  ~ Point center
-  ~ int radius
-  + Circle(Point, int) 
-  + getCenter() Point
-  + getRadius() int
-  + setCenter(Point) void
-  + setRadius(int) void
-  + getPerimeter() double
-  + getArea() double
-  + contains(Point) boolean
-  + translate(int, int) void
-  + toString() String
-}
+    class Circle {
+        -Point center
+        -int radius
+        +Circle(Point center, int radius)
+        +Point getCenter()
+        +void setCenter(Point center)
+        +int getRadius()
+        +void setRadius(int radius)
+        +double getArea()
+        +double getPerimeter()
+        +boolean contains(Point point)
+        +void translate(int dx, int dy)
+        +String toString()
+    }
 ```
 
 ---
@@ -130,21 +126,31 @@ The class provides the following methods:
 * public double getArea() returning the area of the polygon. 
 * public String toString().
 
+Polygons must have at least three vertices. We can throw an *exception* within the constructor to avoid the creation of invalid objects, as shown below:
+
+```
+public Polygon(Point[] vertices) {
+    if (vertices.length < 3) {
+        throw new IllegalArgumentException("Al least three vertices are required");
+    }
+    this.vertices = vertices;
+}
+```
+
 Refer to [this guide](https://arachnoid.com/area_irregular_polygon/index.html) for computing perimeter and area.
 
 Refer to the UML diagram, JavaDoc documentation, and unit tests for further inspiration.
 
 ```mermaid
 classDiagram
-direction BT
-class Polygon {
-  ~ Point[] vertices
-  + Polygon(Point[]) 
-  + getVerticesCount() int
-  + getPerimeter() double
-  + getArea() double
-  + toString() String
-}
+    class Polygon {
+        -final Point[] vertices
+        +Polygon(Point[] vertices)
+        +int getVerticesCount()
+        +double getPerimeter()
+        +double getArea()
+        +String toString()
+    }
 ```
 
 ---
@@ -162,26 +168,25 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class BankAccount {
-     ~ double balance
-    + BankAccount()
-    + BankAccount(double)
-    + getBalance() double
-    + deposit(double) void
-    + withdraw(double) void
-}
+    class BankAccount {
+        -double balance
+        +BankAccount()
+        +BankAccount(double balance)
+        +double getBalance()
+        +void deposit(double amount)
+        +void withdraw(double amount)
+    }
 ```
 
 ---
 
 **[basic.EnhancedResizableArray]** Write a class named EnhancedResizableArray representing a resizable array. It internally keeps an int array, enlarges it when needed, and provides its key functionalities via a set of methods:
 
-* public EnhancedResizableArray() creating an empty resizable array (the underlying int[] has a default capacity of 4 items).
+* public EnhancedResizableArray() creating an empty resizable array (the underlying int[] has a default capacity of DEFAULT_CAPACITY items).
 * public int get(int index) returning the element at the specified index.
 * public void set(int index, int value) setting the element at the specified index with value. If the underlying int[] capacity is smaller than index, a new int[] (with a capacity of index * 2 items) have to be allocated. All the newly allocated elements have to be set to 0.
 * public boolean contains(int value) returning true if the specified value is contained within the internal array.
-* public void fill(int) setting all the elements of the internal array to the specified value.
+* public void fill(int value) setting all the elements of the internal array to the specified value.
 * public int length() returning the capacity of the internal array.
 * public int[] toArray() returning a copy of the internal array.
 
@@ -189,18 +194,17 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class EnhancedResizableArray {
-  + static final int DEFAULT_CAPACITY = 4;
-  ~ int[] v
-  + EnhancedResizableArray() 
-  + get(int) int
-  + set(int, int) void
-  + contains(int) boolean
-  + fill(int) void
-  + length() int
-  + toArray() int[]
-}
+    class EnhancedResizableArray {
+        +static final int DEFAULT_CAPACITY
+        -int[] v
+        +EnhancedResizableArray()
+        +int get(int index)
+        +void set(int index, int value)
+        +boolean contains(int value)
+        +void fill(int value)
+        +int[] toArray()
+        +int length()
+    }
 ```
 
 ---
@@ -243,20 +247,19 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 
 ```mermaid
 classDiagram
-direction BT
-class Letter {
-  ~ String from
-  ~ String to
-  ~ StringBuilder lines
-  + Letter(String, String)
-  + addLine(String) void 
-  + getText() String
-}
+    class Letter {
+        -final String from
+        -final String to
+        -final StringBuilder lines
+        +Letter(String from, String to)
+        +void addLine(String line)
+        +String getText()
+    }
 ```
 
 ---
 
-**[reverse package]** Given the Reverser interface defining a single method *reverse* for reversing a string, provide two implementations namely ReverserFast and ReverserSlow providing two different strategies for reversing a String. As a suggestion, ReverserSlow could use a char array (see String.valueOf()), while ReverserFast could use a StringBuilder. Provide also a simple main() in which the Reverser interface is implemented anonymously.
+**[reverse package]** Given the Reverser interface defining a single method *reverse* for reversing a string, provide two implementations namely ReverserFast and ReverserSlow providing two different strategies for reversing a String. As a suggestion, ReverserSlow could use a char array (see String.valueOf()), while ReverserFast could use a StringBuilder. Try also to write an anonymous implementation of the Reverser interface within a test.
 
 Refer to the UML diagram, JavaDoc documentation, and unit tests for further inspiration.
 
@@ -339,67 +342,79 @@ PhoneBookList  ..|>  PhoneBook
 ---
 
 **[bankaccount package]** Define two classes, namely BankAccountEasy and BankAccountPro implementing the BankAccount interface (reported below).
-* BankAccountPro represents a fully fledged bank account, allowing international transfers, negative balances, and a 2pc interest rate. However, all this comes with the cost of 1 Euro for each operation (deposit, withdrawal). Note well: the first two characters of IBANs represent a country code.
+* BankAccountPro represents a fully fledged bank account, allowing international transfers, negative balances, and a 2pc interest rate. However, all this comes with the cost of 1 Euro for each operation (deposit, withdrawal). 
 * BankAccountEasy represents a basic bank account, which does not support negative balances, international transfers, and does not pay any interest. Nevertheless, deposits and withdrawals are free.
 
-Both accounts must refuse to set invalid IBANs or positive fees (money being added for each operation).
+Note well: a valid IBAN must have a length comprised between 8 and 34 characters and the first two characters (representing the country) must be uppercase letters. Both accounts must refuse to set **invalid IBANs** or **positive fees** (money being added for each operation). To implement these functionalities, you can throw an IllegalArgumentException as shown below:
+
+```
+public void setOperationFee(double operationFee) {
+    if (operationFee < 0.0) {
+        throw new IllegalArgumentException("Invalid negative fee");
+    }
+    this.operationFee = operationFee;
+}
+```
 
 Refer to the UML diagram, JavaDoc documentation, and unit tests for further inspiration.
 
 ```mermaid
 classDiagram
-direction BT
-class AbstractBankAccount {
-  <<abstract>>
-  ~ String IBAN
-  ~ double balance
-  ~ double interestRate
-  ~ double operationFee
-  + AbstractBankAccount(String, double, double, double)
-  + addInterest() void
-  ~ applyFee() void
-  ~ checkIBAN(String) void
-  + deposit(double) void
-  + getBalance() double
-  + getIBAN() String
-  + getInterestRate() double
-  + getOperationFee() double
-  + setBalance(double) void
-  + setIBAN(String) void
-  + setInterestRate(double) void
-  + setOperationFee(double) void
-  + transfer(BankAccount, double) void
-  + withdraw(double) void
-}
 class BankAccount {
-  <<Interface>>
-  + addInterest() void
-  + deposit(double) void
-  + getBalance() double
-  + getIBAN() String
-  + getInterestRate() double
-  + getOperationFee() double
-  + setBalance(double) void
-  + setIBAN(String) void
-  + setInterestRate(double) void
-  + setOperationFee(double) void
-  + transfer(BankAccount, double) void
-  + withdraw(double) void
-}
-class BankAccountEasy {
-  + BankAccountEasy(String, double)
-  + transfer(BankAccount, double) void
-  + withdraw(double) void
-}
-class BankAccountPro {
-  + BankAccountPro(String, double)
-  + deposit(double) void
-  + withdraw(double) void
+<<interface>>
++String getIBAN()
++void setIBAN(String IBAN)
++double getBalance()
++void setBalance(double balance)
++double getOperationFee()
++void setOperationFee(double operationFee)
++double getInterestRate()
++void setInterestRate(double interestRate)
++void deposit(double amount)
++double withdraw(double amount)
++double transfer(BankAccount other, double amount)
++void addInterest()
++void applyFee()
++static void checkIBAN(String IBAN)
 }
 
-AbstractBankAccount  ..>  BankAccount
-BankAccountEasy  --|>  AbstractBankAccount
-BankAccountPro  --|>  AbstractBankAccount
+class AbstractBankAccount {
+    <<abstract>>
+-String IBAN
+-double balance
+-double operationFee
+-double interestRate
++AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate)
++String getIBAN()
++void setIBAN(String IBAN)
++double getBalance()
++void setBalance(double balance)
++double getOperationFee()
++void setOperationFee(double operationFee)
++double getInterestRate()
++void setInterestRate(double interestRate)
++void deposit(double amount)
++double withdraw(double amount)
++double transfer(BankAccount other, double amount)
++void addInterest()
++void applyFee()
+}
+
+class BankAccountEasy {
++BankAccountEasy(String IBAN, double balance)
++double withdraw(double amount)
++double transfer(BankAccount other, double amount)
+}
+
+class BankAccountPro {
++BankAccountPro(String IBAN, double balance)
++void deposit(double amount)
++double withdraw(double amount)
+}
+
+BankAccountEasy --|> AbstractBankAccount
+BankAccountPro --|> AbstractBankAccount
+AbstractBankAccount ..|> BankAccount
 ```
 ---
 
