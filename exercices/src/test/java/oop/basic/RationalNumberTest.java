@@ -2,7 +2,8 @@ package oop.basic;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class RationalNumberTest {
 
@@ -39,9 +40,9 @@ class RationalNumberTest {
         RationalNumber r1 = new RationalNumber(6, 3);
         RationalNumber r2 = new RationalNumber(6, 3);
         RationalNumber r3 = new RationalNumber(1, 10);
-
         assertEquals(r1, r2);
         assertNotEquals(r1, r3);
+        assertNotEquals(null, r1);
     }
 
     @Test
@@ -54,7 +55,6 @@ class RationalNumberTest {
     void testHashCode() {
         RationalNumber r1 = new RationalNumber(3, 4);
         RationalNumber r2 = new RationalNumber(3, 4);
-
         assertEquals(r2.hashCode(), r1.hashCode());
     }
 }

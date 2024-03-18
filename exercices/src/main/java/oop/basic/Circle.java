@@ -45,6 +45,9 @@ public class Circle {
 
     @Override
     public String toString() {
-        return center.toString();
+        return "Circle{" +
+                "center=" + center +
+                ", radius=" + radius +
+                '}';
     }
 }
