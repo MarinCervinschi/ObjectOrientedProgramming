@@ -6,10 +6,10 @@ public class Rectangle extends AbstractShape{
     protected Point bottomRight;
     protected Point upperLeft;
 
-    public Rectangle(String color, String id, Point bottomRight, Point upperLeft) {
-        super(color, id);
-        this.bottomRight = bottomRight;
+    public Rectangle(String id, String color, Point upperLeft, Point bottomRight) {
+        super(id, color);
         this.upperLeft = upperLeft;
+        this.bottomRight = bottomRight;
     }
 
     public Point getBottomRight() {
@@ -51,11 +51,6 @@ public class Rectangle extends AbstractShape{
 
     @Override
     public String toString() {
-        return "Rectangle{" +
-                "bottomRight=" + bottomRight +
-                ", upperLeft=" + upperLeft +
-                ", color='" + color + '\'' +
-                ", id='" + id + '\'' +
-                '}';
+        return "Rectangle{" + "upperLeft=" + upperLeft + ", bottomRight=" + bottomRight + ", id='" + id + '\'' + ", color=" + color + '}';
     }
 }

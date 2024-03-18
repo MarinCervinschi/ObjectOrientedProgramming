@@ -40,7 +40,7 @@ public class Circle extends AbstractShape{
 
     @Override
     public void move(Point movement) {
-       center.setLocation(movement);
+       center.translate(movement.x, movement.y);
     }
 
     @Override
