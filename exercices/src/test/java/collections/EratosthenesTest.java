@@ -13,7 +13,8 @@ class EratosthenesTest {
         assertEquals(Set.of(), Eratosthenes.eratosthenes(1));
         assertEquals(Set.of(2, 3), Eratosthenes.eratosthenes(3));
         assertEquals(Set.of(2, 3, 5, 7, 11, 13, 17, 19, 23), Eratosthenes.eratosthenes(26));
-        long startTime = System.nanoTime();
+
+        long startTime1 = System.nanoTime();
         assertEquals(Set.of(2, 3, 5, 7, 11, 13, 17, 19, 23,
                 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
                 73, 79, 83, 89, 97, 101, 103, 107, 109, 113,
@@ -25,11 +26,9 @@ class EratosthenesTest {
                 383, 389, 397, 401, 409, 419, 421, 431, 433,
                 439, 443, 449, 457, 461, 463, 467, 479, 487,
                 491, 499, 503, 509, 521, 523, 541), Eratosthenes.eratosthenes(542));
-        long end = System.nanoTime();
+        long endTime1 = System.nanoTime();
 
-        System.out.println("Run time: " + (end - startTime));
-
-        startTime = System.nanoTime();
+        long startTime2 = System.nanoTime();
         assertEquals(Set.of(2, 3, 5, 7, 11, 13, 17, 19, 23,
                 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
                 73, 79, 83, 89, 97, 101, 103, 107, 109, 113,
@@ -41,9 +40,14 @@ class EratosthenesTest {
                 383, 389, 397, 401, 409, 419, 421, 431, 433,
                 439, 443, 449, 457, 461, 463, 467, 479, 487,
                 491, 499, 503, 509, 521, 523, 541), EratosthenesOPT.eratosthenes(542));
-        end = System.nanoTime();
+        long endTime2 = System.nanoTime();
 
-        System.out.println("Run time: " + (end - startTime));
+        long duration1 = endTime1 - startTime1;
+        long duration2 = endTime2 - startTime2;
+
+        double difference = ((double)duration1 - duration2) / duration1 * 100;
+
+        System.out.println("EratosthenesOPT is: " + difference + "% more efficient than Eratosthenes.");
 
     }
 }
