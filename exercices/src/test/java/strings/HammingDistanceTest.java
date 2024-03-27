@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class HammingDistanceTest {
 
     @Test
-    void hammingDistance() throws Exception {
+    void hammingDistance() {
         assertThrows(IllegalArgumentException.class, () -> HammingDistance.hammingDistance("", "nicola"));
         assertThrows(IllegalArgumentException.class, () -> HammingDistance.hammingDistance("nicola", ""));
         assertEquals(1, HammingDistance.hammingDistance("nicola", "n1cola"));
