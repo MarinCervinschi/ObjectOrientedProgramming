@@ -1,4 +1,4 @@
-# Object Oriented Programming - DIEF/UNIMORE
+# Object-Oriented Programming - DIEF/UNIMORE
 
 ## Java Exercises (Strings)
 
@@ -195,7 +195,7 @@ where:
 
 ---
 
-**[CountYZ.java]** Write a method accepting a string, and counting the number of words ending in 'y' or 'z' so the 'y' in "heavy" and the 'z' in "fez" count, but not the 'y' in "yellow" (not case sensitive) (see Scanner class).
+**[CountYZ.java]** Write a method accepting a string, and counting the number of words ending in 'y' or 'z' so the 'y' in "heavy" and the 'z' in "fez" count, but not the 'y' in "yellow" (not case-sensitive) (see java.util.StringTokenizer class).
 
 Examples:
 
@@ -215,7 +215,7 @@ where:
 
 ---
 
-**[EqualIsNot.java]** Write a method accepting a string, and returning true if the number of appearances of "is" anywhere in the string is equal to the number of appearances of "not" anywhere in the string (case sensitive) (See String.indexOf()).
+**[EqualIsNot.java]** Write a method accepting a string, and returning true if the number of appearances of "is" anywhere in the string is equal to the number of appearances of "not" anywhere in the string (case-sensitive) (See String.indexOf()).
 
 Examples:
 
@@ -252,3 +252,24 @@ public static int sumDigits(String string);
 where:
 
 * **string** is the string to be processed
+
+---
+
+**[HammingDistance.java]** In information theory, the [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance) between two strings **of equal length** is the number of positions at which the corresponding symbols are different. Given two strings, return their Hamming distance.
+
+Examples:
+
+* hammingDistance("nicola", "n1cola") → 1
+* hammingDistance("nicola", "nicola") → 0
+* hammingDistance("nicola", "zzzzzz") → 6
+
+The method has the following prototype:
+
+```
+public static int hammingDistance(String s1, String s2);
+```
+
+where:
+
+* **s1** is the first string
+* **s2** is the second string
