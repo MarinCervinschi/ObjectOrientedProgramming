@@ -13,8 +13,8 @@ public class WordFrequencySorted {
             ans.put(entry.getKey(), entry.getValue());
         }
 
-    return ans;
-}
+        return ans;
+    }
     public static Map<String, Integer> lessFrequent(Map<String, Integer> map, int limit) {
         List<Map.Entry<String, Integer>> least = new ArrayList<>(map.entrySet());
 
