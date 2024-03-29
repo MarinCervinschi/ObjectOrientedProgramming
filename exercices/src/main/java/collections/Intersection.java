@@ -13,4 +13,10 @@ public class Intersection {
         }
         return ans;
     }
+
+    public static Set<Integer> intersectionRetainAll(Set<Integer> first, Set<Integer> second) {
+        Set<Integer> ans = new HashSet<>(first);
+        ans.retainAll(second);
+        return ans;
+    }
 }
