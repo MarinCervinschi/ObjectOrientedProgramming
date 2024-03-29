@@ -2,7 +2,35 @@
 
 ## Java Exercises (Lists)
 
-**[DownSize]** Write a method that removes every nth String from a ```List<String>```.
+**[CollatzSequence.java]** Consider the following operation on an arbitrary positive integer:
+
+* If the number is even, divide it by two.
+* If the number is odd, triple it and add one.
+
+The [Collatz conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture) is one of the most famous unsolved problems in mathematics. The conjecture asks whether repeating the two simple arithmetic operations above will eventually transform every positive integer into 1. Write a static method returning the Collatz sequence for a given integer number greater than 0.
+
+Examples:
+
+* collatzSequence(1) -> [1]
+* collatzSequence(2) -> [2, 1]
+* collatzSequence(3) -> [3, 10, 5, 16, 8, 4, 2, 1]
+* collatzSequence(4) -> [4, 2, 1]
+
+The method has the following prototype:
+
+```
+public static List<Long> collatzSequence(long n);
+```
+
+where:
+
+* **n** represents the starting number of the sequence
+
+---
+
+**[DownSize.java]** Write a method that removes every nth String from a ```List<String>```.
+
+Examples:
 
 * downSize(["A", "B", "C", "D", "E", "F"], 2) -> ["A", "C", "E"] 
 * downSize(["A", "B", "C", "D", "E", "F"], 3) -> ["A", "B", "D", "E"]
@@ -18,6 +46,7 @@ where:
 * **list** is the list to be downsized
 * **n** represents the intensity of the downsizing
 
+---
 
 **[SortAccount.java]** Given the following class Account:
 
@@ -30,8 +59,7 @@ public static class Account {
 }
 ```
 
-Write three methods accepting a ```List<Account>``` and returning void.
-Each method sorts the list based on one criterion (i.e., one attribute).
+Write three methods accepting a ```List<Account>``` and returning void. Each method sorts the list based on one criterion (i.e., one attribute).
 
 The methods have the following prototype:
 
@@ -85,8 +113,6 @@ public static List<String> reverse(List<String> sentence);
 where:
 
 * **sentence** is the list of words to be reversed.
-
----
 
 ## Java Exercises (Sets)
 
@@ -169,9 +195,7 @@ where:
 ---
 
 **[WordAfterWord.java]** Download the [Ulysses, by James Joyce](https://github.com/laumann/ds/blob/master/hashing/books/) book.
-Write a method, reading all the unique words of the book (all words have to be converted in lowercase), 
-and sorting them in alphabetical order. Given a word, the method returns the next word (in alphabetical order)
-contained within the book (See TreeSet.tailSet()).
+Write a method, reading all the unique words of the book (all words have to be converted in lowercase), and sorting them in alphabetical order. Given a word, the method returns the next word (in alphabetical order) contained within the book (See TreeSet.tailSet()).
 
 The method has the following prototype:
 
@@ -203,7 +227,7 @@ public static List<String> lineToWords(String line) {
 
 ## Java Exercises (Maps)
 
-**[MorseCode]** Write a static method accepting a String, converting it to lowercase, and returning its [Morse](https://en.wikipedia.org/wiki/Morse_code) translation. The 26 lowercase letters of the english alphabet have to be supported. 
+**[MorseCode.java]** Write a static method accepting a String, converting it to lowercase, and returning its [Morse](https://en.wikipedia.org/wiki/Morse_code) translation. The 26 lowercase letters of the english alphabet have to be supported. 
 
 You have to use a ```Map<Characher, String>``` as a conversion table (dot='.', dash='_'). If the input String contains characters not supported by the conversion table, IllegalArgumentException have to be thrown.
 
@@ -225,6 +249,27 @@ where:
 
 ---
 
+**[CheckAnagrams.java]** Write a static method accepting two Strings and returning true if they are anagrams, false otherwise.
+
+Examples:
+
+* areAnagrams("dusty", "study") -> true
+* areAnagrams("world", "sky") -> false
+* areAnagrams("cheap", "") -> false
+
+The method has the following prototype:
+
+```
+public static boolean areAnagrams(String first, String second);
+```
+
+where:
+
+* **first** is the first string.
+* **second** is the second string.
+
+---
+
 **[ValuesKeys.java]** Write a static method accepting a ```Map<String, String>``` and returning true if some values have been used as keys as well.
 
 The method has the following prototype:
@@ -239,7 +284,7 @@ where:
 
 ---
 
-**[InvertMap]** Write a static method accepting a ```Map<Integer, String>``` and returning a ```Map<String, Integer>``` in which the original keys and values have been inverted.
+**[InvertMap.java]** Write a static method accepting a ```Map<Integer, String>``` and returning a ```Map<String, Integer>``` in which the original keys and values have been inverted.
 In case of repeated values (thus associated to multiple keys) you can select one of the keys.
 
 Examples:
