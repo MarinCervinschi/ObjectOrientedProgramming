@@ -331,6 +331,29 @@ classDiagram
 
 ## Java Exercises (Maps)
 
+**[CheckAnagrams.java]** Write a static method accepting two Strings and returning true if they are anagrams, false otherwise.
+
+Two strings are considered anagrams if they contain the same characters but in a different order. The order of characters doesn't matter, what matters is the frequency of each character in both strings.
+
+Examples:
+
+* areAnagrams("dusty", "study") -> true
+* areAnagrams("world", "sky") -> false
+* areAnagrams("cheap", "") -> false
+
+The method has the following prototype:
+
+```
+public static boolean areAnagrams(String first, String second);
+```
+
+where:
+
+* **first** is the first string.
+* **second** is the second string.
+
+---
+
 **[MorseCode.java]** Write a static method accepting a String, converting it to lowercase, and returning its [Morse](https://en.wikipedia.org/wiki/Morse_code) translation. The 26 lowercase letters of the english alphabet have to be supported. 
 
 You have to use a ```Map<Characher, String>``` as a conversion table (dot='.', dash='_'). If the input String contains characters not supported by the conversion table, IllegalArgumentException have to be thrown.
@@ -353,58 +376,44 @@ where:
 
 ---
 
-**[CheckAnagrams.java]** Write a static method accepting two Strings and returning true if they are anagrams, false otherwise.
+**[RomanToDecimal.java]** Roman numerals are represented by seven different symbols: 
+* `I` = 1
+* `V` = 5
+* `X` = 10
+* `L` = 50
+* `C` = 100
+* `D` = 500
+* `M` = 1000
 
-Examples:
-
-* areAnagrams("dusty", "study") -> true
-* areAnagrams("world", "sky") -> false
-* areAnagrams("cheap", "") -> false
-
-The method has the following prototype:
-
-```
-public static boolean areAnagrams(String first, String second);
-```
-
-where:
-
-* **first** is the first string.
-* **second** is the second string.
-
----
-**[RomanToInteger.java]** Roman numerals are represented by seven different symbols: `I`, `V`, `X`, `L`, `C`, `D` and `M`.
-* **Symbol** I, V, X, L, C, D, M 
-* **Value**  1, 5, 10, 50, 100, 500, 1000
-
-Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. 
+Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not `IIII`. Instead, the number four is written as `IV`. 
+Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as `IX`. 
 
 There are six instances where subtraction is used:
 * `I` can be placed before `V` (5) and `X` (10) to make 4 and 9.
 * `X` can be placed before `L` (50) and `C` (100) to make 40 and 90.
-* `C` can be placed before `D`(500) and `M` (1000) to make 400 and 900.
+* `C` can be placed before `D` (500) and `M` (1000) to make 400 and 900.
 
-Given a roman numeral, convert it to an integer.
+Given a roman numeral, convert it to a decimal one.
 
 Examples:
-* romanToInteger("III") -> 3
-* romanToInteger("LVIII") -> 58
-* romanToInteger("MCMXCIV") -> 1994
+* romanToDecimal("III") -> 3
+* romanToDecimal("LVIII") -> 58
+* romanToDecimal("MCMXCIV") -> 1994
 
 The method has the following prototype:
 
 ```
-public static int romanToInteger(String s);
+public static int romanToDecimal(String s);
 ```
 
 where:
 
-* **s** is the string representing the roman number.
+* **s** is the string representing the roman numeral.
 
 Constraints:
+
 * `1 <= s.length <= 15`
-* `s` contains only the characters `('I', 'V', 'X', 'L', 'C', 'D', 'M')`.
----
+* `s` contains only the characters `('I', 'V', 'X', 'L', 'C', 'D', 'M')`
 
 ---
 
