@@ -21,5 +21,4 @@ class CheckAnagramsTest {
         assertFalse(CheckAnagrams.areAnagrams("peach", ""));
     }
 
-
 }
