@@ -43,16 +43,20 @@ public class MyArrayList extends MyAbstractList {
         elements[index] = 0;
         elements[size] = null;
 
-
     }
 
     @Override
     public Object remove(int index) {
-        return null;
+        checkBoundaries(index, size -1);
+        Object removed = get(index);
+        System.arraycopy(elements, index + 1, elements, index, size - index);
+        elements[size--] = null;
+        return removed;
     }
 
     @Override
     public Object get(int index) {
-        return null;
+        checkBoundaries(index, size -1);
+        return elements[index];
     }
 }
