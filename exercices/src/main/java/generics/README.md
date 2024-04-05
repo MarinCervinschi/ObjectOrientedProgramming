@@ -1,4 +1,4 @@
-# Object Oriented Programming - DIEF/UNIMORE
+# Object-Oriented Programming - DIEF/UNIMORE
 
 ## Java Exercises (Generics)
 
@@ -23,7 +23,7 @@ where:
 ---
 
 **[Divide.java]** Write a generic static method returning the floating point division of any two numbers regardless of
-their specific type e.g. int, double, etc.. (see java.lang.Number class).
+their specific type e.g. int, double, etc. (see java.lang.Number class).
 
 Examples:
 
@@ -71,7 +71,7 @@ should compile but append(students, people) should not. The prototype is not rep
 
 ---
 
-**[Reverse]** Write a generic static method to reverse a list (see List.get() and List.set() methods).
+**[Reverse.java]** Write a generic static method to reverse a list (see List.get() and List.set() methods).
 
 Examples:
 
@@ -91,7 +91,7 @@ where:
 
 ---
 
-**[CountOccurrences]** Write a generic static method counting all occurrences of a specific item of type T within a T[].
+**[CountOccurrences.java]** Write a generic static method counting all occurrences of a specific item of type T within a T[].
 It the passed item is null, the method should return the number of null values within the array.
 
 Examples:
@@ -110,6 +110,28 @@ where:
 
 * **src** is the array to be searched within.
 * **item** is the item to be searched.
+
+---
+
+**[BinarySearch.java]**  Binary search is one of the most popular algorithms. It finds the position of a target value within a sorted array. Write a generic static method implementing binary search within a T[], where T is any Comparable type. The method returns -1 if the target value is not found.
+
+Examples:
+
+* find([0, 1, 2, 3, 4, 5], 2) → 2
+* find([0, 1, 2, 3, 4, 5], 3) → 3
+* find([0, 1, 2, 3, 4, 5], -2) → -1
+* find([0, 1, 2, 3, 4, 5], 10) → -1
+
+The method has the following prototype:
+
+```
+public static <T extends Comparable<T>> int find(T[] array, T key);
+```
+
+where:
+
+* **array** is the array to be searched within.
+* **key** is the key to be searched.
 
 ---
 
