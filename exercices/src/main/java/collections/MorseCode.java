@@ -48,4 +48,15 @@ public class MorseCode {
         // trim() eventually removes the last space
         return sb.toString().trim();
     }
+
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            throw new IllegalArgumentException("Please provide at least one argument");
+        }
+        for (String input : args) {
+            String character = input.toLowerCase();
+            String morseCode = morseCode(character);
+            System.out.println(morseCode);
+        }
+    }
 }
