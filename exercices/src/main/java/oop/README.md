@@ -8,7 +8,7 @@ In IntelliJ, click on the oop package then select Tools -> Generate JavaDoc...
 
 ---
 
-**[basic.ClickCounter]** Write a class named ClickCounter representing a simple device to keep track of how many times a button (in this case a method) is clicked.
+**[basic.ClickCounter.java]** Write a class named ClickCounter representing a simple device to keep track of how many times a button (in this case a method) is clicked.
 Internally, the class represents the number of clicks with an int value (starting from 0).
 The class provides the following methods:
 * public int getValue() returning the current number of clicks.
@@ -31,7 +31,7 @@ classDiagram
 
 ---
 
-**[basic.RationalNumber]** Write a class named RationalNumber representing a rational number.
+**[basic.RationalNumber.java]** Write a class named RationalNumber representing a rational number.
 RationalNumbers are immutable objects, indeed they cannot be changed after creation.
 Internally, the class represents numerator and denominator as int values. RationalNumbers must support equality with other RationalNumbers (see Object.equals(), Object.hashCode()) 
 The class provides the following methods:
@@ -44,7 +44,7 @@ The class provides the following methods:
 
 You can use the following two methods for computing the least common multiple and the greatest common divisor of two integer numbers.
 
-```
+```java
 public static int greatestCommonDivisor(int a, int b) {
     int max = Math.max(a, b);
     int min = Math.min(a, b);
@@ -84,7 +84,7 @@ classDiagram
 
 ---
 
-**[basic.Circle]** Write a class named Circle representing a Circle on a 2D plane.
+**[basic.Circle.java]** Write a class named Circle representing a Circle on a 2D plane.
 Internally, the class uses a Point object and an int value for representing the center and the radius of the Circle, respectively. 
 The class provides the following methods:
 * public Circle(Point center, int radius) creating the circle.
@@ -117,10 +117,10 @@ classDiagram
 
 ---
 
-**[basic.Polygon]** Write a class named Polygon representing an irregular polygon.
+**[basic.Polygon.java]** Write a class named Polygon representing an irregular polygon.
 Internally, the class uses a Point[] for representing the vertices of the polygon.
 The class provides the following methods:
-* public Polygon(Point[] vertices) creating the polygon.
+* public Polygon(Point2D.Double[] vertices) creating the polygon.
 * public int getVerticesCount() returning the number of vertices.
 * public double getPerimeter() returning the perimeter of the polygon. 
 * public double getArea() returning the area of the polygon. 
@@ -128,8 +128,8 @@ The class provides the following methods:
 
 Polygons must have at least three vertices. We can throw an *exception* within the constructor to avoid the creation of invalid objects, as shown below:
 
-```
-public Polygon(Point[] vertices) {
+```java
+public Polygon(Point2D.Double[] vertices) {
     if (vertices.length < 3) {
         throw new IllegalArgumentException("Al least three vertices are required");
     }
@@ -144,7 +144,7 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 ```mermaid
 classDiagram
     class Polygon {
-        -final Point[] vertices
+        -final Point2D.Double[] vertices
         +Polygon(Point[] vertices)
         +int getVerticesCount()
         +double getPerimeter()
@@ -155,7 +155,7 @@ classDiagram
 
 ---
 
-**[basic.BankAccount]** Write a class named BankAccount representing a bank account.
+**[basic.BankAccount.java]** Write a class named BankAccount representing a bank account.
 Internally, the class uses a double value for representing the balance of the account.
 The class provides the following methods:
 * public BankAccount() creating an empty account.
@@ -180,7 +180,7 @@ classDiagram
 
 ---
 
-**[basic.EnhancedResizableArray]** Write a class named EnhancedResizableArray representing a resizable array. It internally keeps an int array, enlarges it when needed, and provides its key functionalities via a set of methods:
+**[basic.EnhancedResizableArray.java]** Write a class named EnhancedResizableArray representing a resizable array. It internally keeps an int array, enlarges it when needed, and provides its key functionalities via a set of methods:
 
 * public EnhancedResizableArray() creating an empty resizable array (the underlying int[] has a default capacity of DEFAULT_CAPACITY items).
 * public int get(int index) returning the element at the specified index.
@@ -209,28 +209,28 @@ classDiagram
 
 ---
 
-**[basic.Letter]** Write a class for authoring a simple letter.
+**[basic.Letter.java]** Write a class for authoring a simple letter.
 In the constructor, supply the names of the sender and the recipient:
 
-```
-public Letter(String from, String to)
+```java
+public Letter(String from, String to);
 ```
 
 Supply a method to add a line of text to the body of the letter.
 
-```
-public void addLine(String line)
+```java
+public void addLine(String line);
 ```
 
 Supply a method that returns the entire text of the letter.
 
-```
-public String getText()
+```java
+public String getText();
 ```
 
 The text has the form:
 
-```
+```text
 Dear recipient name: 
 blank line
 first line of the body 
@@ -296,8 +296,8 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 classDiagram
 direction BT
 class Person {
-  ~ String lastname
   ~ String name
+  ~ String lastname
   ~ String phone
   + Person(String, String, String) 
   + getLastname() String
@@ -312,14 +312,14 @@ class Person {
 }
 class PhoneBook {
   <<Interface>>
+  + static final int MAX_PERSONS = 256
   + addPerson(Person) boolean
   + removePerson(Person) boolean
   + searchByLastname(String) Person[]
   + searchByNameAndLastname(String, String) Person[]
 }
 class PhoneBookArray {
-  + static final int MAX_PERSONS = 256
-  ~ Person[] phoneBook
+  ~ final Person[] phoneBook
   + PhoneBookArray() 
   + addPerson(Person) boolean
   + removePerson(Person) boolean
@@ -327,8 +327,7 @@ class PhoneBookArray {
   + searchByNameAndLastname(String, String) Person[]
 }
 class PhoneBookList {
-  + static final int MAX_PERSONS = 256
-  ~ ArrayList~Person~ phoneBook
+  ~ final ArrayList~Person~ phoneBook
   + PhoneBookList() 
   + addPerson(Person) boolean
   + removePerson(Person) boolean
@@ -345,14 +344,19 @@ PhoneBookList  ..|>  PhoneBook
 * BankAccountPro represents a fully fledged bank account, allowing international transfers, negative balances, and a 2pc interest rate. However, all this comes with the cost of 1 Euro for each operation (deposit, withdrawal). 
 * BankAccountEasy represents a basic bank account, which does not support negative balances, international transfers, and does not pay any interest. Nevertheless, deposits and withdrawals are free.
 
-Note well: a valid IBAN must have a length comprised between 8 and 34 characters and the first two characters (representing the country) must be uppercase letters. Both accounts must refuse to set **invalid IBANs** or **positive fees** (money being added for each operation). To implement these functionalities, you can throw an IllegalArgumentException as shown below:
+Note well:
+* a valid IBAN must have a length comprised between 8 and 34 characters and the first two characters (representing the country) must be uppercase letters;
+* the operationFee (money that will be subtracted for each operation) value must be greater or equal to zero;
+* the deposit or withdraw amount must be greater or equal to zero.
 
-```
-public void setOperationFee(double operationFee) {
-    if (operationFee < 0.0) {
-        throw new IllegalArgumentException("Invalid negative fee");
+Both accounts must refuse to set **invalid IBANs**, to set **negative fees** and to operate with **negative amounts**.
+To implement these functionalities, you can throw an IllegalArgumentException as shown below:
+
+```java
+public void checkPositiveValue(double value){
+    if(value < 0.0){
+        throw new IllegalArgumentException("Negative values are not allowed for this operation");
     }
-    this.operationFee = operationFee;
 }
 ```
 
@@ -361,60 +365,61 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 ```mermaid
 classDiagram
 class BankAccount {
-<<interface>>
-+String getIBAN()
-+void setIBAN(String IBAN)
-+double getBalance()
-+void setBalance(double balance)
-+double getOperationFee()
-+void setOperationFee(double operationFee)
-+double getInterestRate()
-+void setInterestRate(double interestRate)
-+void deposit(double amount)
-+double withdraw(double amount)
-+double transfer(BankAccount other, double amount)
-+void addInterest()
-+void applyFee()
-+static void checkIBAN(String IBAN)
+    <<interface>>
+    +String getIBAN()
+    +void setIBAN(String IBAN)
+    +double getBalance()
+    +void setBalance(double balance)
+    +double getOperationFee()
+    +void setOperationFee(double operationFee)
+    +double getInterestRate()
+    +void setInterestRate(double interestRate)
+    +void deposit(double amount)
+    +double withdraw(double amount)
+    +double transfer(BankAccount other, double amount)
+    +void addInterest()
+    +void applyFee()
+    +static void checkIBAN(String IBAN)
 }
 
 class AbstractBankAccount {
     <<abstract>>
--String IBAN
--double balance
--double operationFee
--double interestRate
-+AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate)
-+String getIBAN()
-+void setIBAN(String IBAN)
-+double getBalance()
-+void setBalance(double balance)
-+double getOperationFee()
-+void setOperationFee(double operationFee)
-+double getInterestRate()
-+void setInterestRate(double interestRate)
-+void deposit(double amount)
-+double withdraw(double amount)
-+double transfer(BankAccount other, double amount)
-+void addInterest()
-+void applyFee()
+    # String IBAN
+    # double balance
+    # double operationFee
+    # double interestRate
+    # AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate)
+    #void checkPositiveValue(double value)
+    +String getIBAN()
+    +void setIBAN(String IBAN)
+    +double getBalance()
+    +void setBalance(double balance)
+    +double getOperationFee()
+    +void setOperationFee(double operationFee)
+    +double getInterestRate()
+    +void setInterestRate(double interestRate)
+    +void deposit(double amount)
+    +double withdraw(double amount)
+    +double transfer(BankAccount other, double amount)
+    +void addInterest()
+    +void applyFee()
 }
 
 class BankAccountEasy {
-+BankAccountEasy(String IBAN, double balance)
-+double withdraw(double amount)
-+double transfer(BankAccount other, double amount)
+    +BankAccountEasy(String IBAN, double balance)
+    +double withdraw(double amount)
+    +double transfer(BankAccount other, double amount)
 }
 
 class BankAccountPro {
-+BankAccountPro(String IBAN, double balance)
-+void deposit(double amount)
-+double withdraw(double amount)
+    +BankAccountPro(String IBAN, double balance)
+    +void deposit(double amount)
+    +double withdraw(double amount)
 }
 
+AbstractBankAccount ..|> BankAccount
 BankAccountEasy --|> AbstractBankAccount
 BankAccountPro --|> AbstractBankAccount
-AbstractBankAccount ..|> BankAccount
 ```
 ---
 
@@ -434,11 +439,24 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 ```mermaid
 classDiagram
 direction BT
+class Computable {
+    <<Interface>>
+    + getArea() double
+    + getPerimeter() double
+}
+class Movable {
+    <<Interface>>
+    + move(Point) void
+}
+class Resizable {
+    <<Interface>>
+    + resize(double) void
+}
 class AbstractShape {
   <<abstract>>
-  ~ String color
-  ~ String id
-  + AbstractShape(String, String) 
+  # String color
+  # String id
+  # AbstractShape(String, String) 
   + getArea() double
   + getColor() String
   + getId() String
@@ -476,19 +494,6 @@ class Rectangle {
   + setUpperLeft(Point) void
   + toString() String
 }
-class Computable {
-  <<Interface>>
-  + getArea() double
-  + getPerimeter() double
-}
-class Movable {
-  <<Interface>>
-  + move(Point) void
-}
-class Resizable {
-  <<Interface>>
-  + resize(double) void
-}
 
 AbstractShape  ..>  Computable 
 AbstractShape  ..>  Movable 
@@ -516,10 +521,16 @@ Refer to the UML diagram, JavaDoc documentation, and unit tests for further insp
 ```mermaid
 classDiagram
 direction BT
+class Poly {
+    <<Interface>>
+    + coefficient(int) double
+    + coefficients() double[]
+    + degree() int
+    + derivative() Poly
+}
 class AbstractPoly {
   <<abstract>>
-  + AbstractPoly() 
-  ~ derive() double[]
+  # derive() double[]
   + equals(Object) boolean
   + hashCode() int
   + toString() String
@@ -535,13 +546,6 @@ class ArrayPoly {
 class ListPoly {
   ~ ArrayList~Double~ coefficients
   + ListPoly(double[]) 
-  + coefficient(int) double
-  + coefficients() double[]
-  + degree() int
-  + derivative() Poly
-}
-class Poly {
-  <<Interface>>
   + coefficient(int) double
   + coefficients() double[]
   + degree() int
@@ -571,21 +575,21 @@ classDiagram
 direction BT
 class Item {
     <<Abstract>>
-    ~ String title
-    ~ int year
-    + Item(String, int)
+    # String title
+    # int year
+    # Item(String, int)
     + getTitle() String
     + getYear() int
     + setTitle(String) void
     + setYear(int) void
-    + equals(Object) boolean
-    + hashCode() int
 }
 class Book {
     ~ int pages
     + Book(String, int, int)
     + getPages() int
     + setPages(int) void
+    + equals(Object) boolean
+    + hashCode() int
     + toString() String
 }
 class Dvd {
@@ -593,6 +597,8 @@ class Dvd {
     + Dvd(String, int, int)
     + getLength() int
     + setLength(int) void
+    + equals(Object) boolean
+    + hashCode() int
     + toString() String
 }
 class Person {
@@ -611,10 +617,10 @@ class Person {
     + toString() String
 }
 class Rent {
-    ~ LocalDate begin
-    ~ LocalDate end
     ~ Item item
     ~ Person person
+    ~ LocalDate begin
+    ~ LocalDate end
     + Rent(Item, Person, LocalDate, LocalDate)
     + getBegin() LocalDate
     + getEnd() LocalDate

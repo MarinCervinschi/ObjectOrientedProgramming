@@ -1,5 +1,5 @@
 package oop.shape;
 
 public interface Resizable {
-    void resize(double scale);
+    void resize(double r);
 }

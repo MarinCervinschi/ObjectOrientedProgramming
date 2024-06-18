@@ -2,55 +2,61 @@ package oop.shape;
 
 import java.awt.*;
 
-public class Rectangle extends AbstractShape{
-    protected Point bottomRight;
-    protected Point upperLeft;
+public class Rectangle extends AbstractShape {
+    Point bottomRight;
+    Point upperLeft;
 
     public Rectangle(String id, String color, Point upperLeft, Point bottomRight) {
         super(id, color);
-        this.upperLeft = upperLeft;
         this.bottomRight = bottomRight;
+        this.upperLeft = upperLeft;
     }
 
     public Point getBottomRight() {
         return bottomRight;
     }
 
-    public Point getUpperLeft() {
-        return upperLeft;
-    }
-
     public void setBottomRight(Point bottomRight) {
         this.bottomRight = bottomRight;
+    }
+
+    public Point getUpperLeft() {
+        return upperLeft;
     }
 
     public void setUpperLeft(Point upperLeft) {
         this.upperLeft = upperLeft;
     }
+    @Override
+    public void move(Point point) {
+        upperLeft.translate(point.x, point.y);
+        bottomRight.translate(point.x, point.y);
+    }
 
     @Override
-    public double getArea() {
-        return (bottomRight.x - upperLeft.x) * (upperLeft.y - bottomRight.y);
+    public void resize(double r) {
+        double newX = upperLeft.getX() + ((bottomRight.getX() - upperLeft.getX()) * r);
+        double newY = upperLeft.getY() - ((upperLeft.getY() - bottomRight.getY()) * r);
+        bottomRight.setLocation(newX, newY);
     }
 
     @Override
     public double getPerimeter() {
-        return ((bottomRight.x - upperLeft.x) + (upperLeft.y - bottomRight.y)) * 2;
-    }
-
-    public void move(Point movement) {
-        upperLeft.translate(movement.x, movement.y);
-        bottomRight.translate(movement.x, movement.y);
+        return ((upperLeft.getY() - bottomRight.getY()) + (bottomRight.getX() - upperLeft.getX())) * 2.0;
     }
 
     @Override
-    public void resize(double scale) {
-        bottomRight.x = (int) (upperLeft.x + ((bottomRight.x - upperLeft.x) * scale));
-        bottomRight.y = (int) (upperLeft.y - ((upperLeft.y - bottomRight.y) * scale));
+    public double getArea() {
+        return (upperLeft.getY() - bottomRight.getY()) * (bottomRight.getX() - upperLeft.getX());
     }
 
     @Override
     public String toString() {
-        return "Rectangle{" + "upperLeft=" + upperLeft + ", bottomRight=" + bottomRight + ", id='" + id + '\'' + ", color=" + color + '}';
+        return "Rectangle{" +
+                "bottomRight=" + bottomRight +
+                ", upperLeft=" + upperLeft +
+                ", color='" + color + '\'' +
+                ", id='" + id + '\'' +
+                '}';
     }
 }

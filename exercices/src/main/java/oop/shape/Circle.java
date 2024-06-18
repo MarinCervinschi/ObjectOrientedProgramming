@@ -2,16 +2,15 @@ package oop.shape;
 
 import java.awt.*;
 
-public class Circle extends AbstractShape{
-    protected Point center;
-    protected double radius;
+public class Circle extends AbstractShape {
+    Point center;
+    double radius;
 
-    public Circle(String color, String id, Point center, double radius) {
-        super(color, id);
+    public Circle(String id, String color, Point center, double radius) {
+        super(id, color);
         this.center = center;
         this.radius = radius;
     }
-
     public Point getCenter() {
         return center;
     }
@@ -29,32 +28,32 @@ public class Circle extends AbstractShape{
     }
 
     @Override
+    public void move(Point point) {
+        center.translate(point.x, point.y);
+    }
+
+    @Override
+    public void resize(double r) {
+        radius *= r;
+    }
+
+    @Override
     public double getArea() {
-        return (radius * radius) * Math.PI;
+        return Math.PI * radius * radius;
     }
 
     @Override
     public double getPerimeter() {
-        return radius * 2 * Math.PI;
-    }
-
-    @Override
-    public void move(Point movement) {
-       center.translate(movement.x, movement.y);
-    }
-
-    @Override
-    public void resize(double scale) {
-        radius *= scale;
+        return Math.PI * 2 * radius;
     }
 
     @Override
     public String toString() {
         return "Circle{" +
-                "center=" + center +
-                ", radius=" + radius +
+                "radius=" + radius +
                 ", color='" + color + '\'' +
                 ", id='" + id + '\'' +
+                ", center=" + center +
                 '}';
     }
 }
