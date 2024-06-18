@@ -47,25 +47,15 @@ public class PhoneBookArray implements PhoneBook{
 
     @Override
     public Person[] searchByLastname(String lastname) {
-        int k = 0;
-        Person[] tmp = new Person[MAX_PERSONS];
-        for (int i = 0; i < MAX_PERSONS; i++) {
-            if (phoneBook[i] != null && phoneBook[i].getLastname().equals(lastname)) {
-                tmp[k++] = phoneBook[i];
-            }
-        }
-        return Arrays.copyOf(tmp, k);
+        return Arrays.stream(phoneBook)
+                .filter(p -> p != null && p.getLastname().equals(lastname))
+                .toArray(Person[]::new);
     }
 
     @Override
     public Person[] searchByNameAndLastname(String name, String lastname) {
-        int k = 0;
-        Person[] tmp = new Person[MAX_PERSONS];
-        for (int i = 0; i < MAX_PERSONS; i++) {
-            if (phoneBook[i] != null && phoneBook[i].getName().equals(name) && phoneBook[i].getLastname().equals(lastname)) {
-                tmp[k++] = phoneBook[i];
-            }
-        }
-        return Arrays.copyOf(tmp, k);
+        return Arrays.stream(phoneBook)
+                .filter(p -> p != null && p.getName().equals(name) && p.getLastname().equals(lastname))
+                .toArray(Person[]::new);
     }
 }

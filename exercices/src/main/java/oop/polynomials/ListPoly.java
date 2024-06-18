@@ -1,29 +1,24 @@
 package oop.polynomials;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
-public class ListPoly extends AbstractPoly{
+public class ListPoly extends AbstractPoly {
     ArrayList<Double> coefficients;
 
     public ListPoly(double[] coefficients) {
         this.coefficients = new ArrayList<>();
-        for (double c : coefficients) {
-            this.coefficients.add(c);
-        }
+        IntStream.range(0, coefficients.length).forEach(i -> this.coefficients.add(coefficients[i]));
     }
 
     @Override
-    public double coefficient(int degree) {
-        return coefficients.get(degree);
+    public double coefficient(int c) {
+        return coefficients.get(c);
     }
 
     @Override
     public double[] coefficients() {
-        double[] ans = new double[coefficients.size()];
-        for (int i = 0; i < ans.length; i++) {
-            ans[i] = coefficients.get(i);
-        }
-        return ans;
+        return coefficients.stream().mapToDouble(Double::doubleValue).toArray();
     }
 
     @Override
@@ -33,6 +28,6 @@ public class ListPoly extends AbstractPoly{
 
     @Override
     public Poly derivative() {
-        return new ArrayPoly(derive());
+        return new ListPoly(derive());
     }
 }

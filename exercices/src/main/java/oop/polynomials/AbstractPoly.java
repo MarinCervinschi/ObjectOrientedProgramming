@@ -1,15 +1,15 @@
 package oop.polynomials;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 
-public abstract class AbstractPoly implements Poly{
-
+public abstract class AbstractPoly implements Poly {
     protected double[] derive() {
-        double[] ans = new double[Math.max(1, degree())];
-        for (int i = 1; i <= degree(); i++) {
-            ans[i - 1] = coefficient(i) * i;
+        if (degree() == 0) {
+            return new  double[]{0.0};
         }
-        return ans;
+        return IntStream.range(1, degree() + 1)
+                .mapToDouble(i -> coefficient(i) * i).toArray();
     }
 
     @Override

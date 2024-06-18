@@ -1,8 +1,8 @@
 package oop.polynomials;
 
 public interface Poly {
-    double coefficient(int degree);
-    double[] coefficients();
+    double coefficient(int c);
+    double[]  coefficients();
     int degree();
     Poly derivative();
 }

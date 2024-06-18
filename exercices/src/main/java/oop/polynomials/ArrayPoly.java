@@ -2,21 +2,16 @@ package oop.polynomials;
 
 import java.util.Arrays;
 
-public class ArrayPoly extends AbstractPoly{
-    protected double[] coefficients;
+public class ArrayPoly extends AbstractPoly {
+    double[] coefficients;
 
     public ArrayPoly(double[] coefficients) {
         this.coefficients = coefficients;
     }
 
     @Override
-    public double coefficient(int degree) {
-        return coefficients[degree];
-    }
-
-    @Override
-    public double[] coefficients() {
-        return Arrays.copyOf(coefficients, coefficients.length);
+    public Poly derivative() {
+        return new ArrayPoly(derive());
     }
 
     @Override
@@ -25,7 +20,12 @@ public class ArrayPoly extends AbstractPoly{
     }
 
     @Override
-    public Poly derivative() {
-        return new ArrayPoly(derive());
+    public double[] coefficients() {
+        return Arrays.copyOf(coefficients, coefficients.length);
+    }
+
+    @Override
+    public double coefficient(int c) {
+        return coefficients[c];
     }
 }
