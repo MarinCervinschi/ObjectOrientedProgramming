@@ -1,74 +1,66 @@
 package oop.bankaccount;
 
-public abstract class AbstractBankAccount implements BankAccount {
+public class AbstractBankAccount implements BankAccount {
     protected String IBAN;
-
     protected double balance;
-
     protected double operationFee;
-
     protected double interestRate;
 
-    public AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate) {
+    protected AbstractBankAccount(String IBAN, double balance, double operationFee, double interestRate) {
         this.balance = balance;
         this.interestRate = interestRate;
         setIBAN(IBAN);
         setOperationFee(operationFee);
     }
 
-    @Override
+    public void checkPositiveValue(double value) {
+        if (value < 0.0) {
+            throw new IllegalArgumentException("Negative values are not allowed for this operation");
+        }
+    }
+
     public String getIBAN() {
         return IBAN;
     }
 
-    @Override
     public void setIBAN(String IBAN) {
         BankAccount.checkIBAN(IBAN);
         this.IBAN = IBAN;
     }
 
-    @Override
     public double getBalance() {
         return balance;
     }
 
-    @Override
     public void setBalance(double balance) {
         this.balance = balance;
     }
 
-    @Override
     public double getOperationFee() {
         return operationFee;
     }
 
-    @Override
     public void setOperationFee(double operationFee) {
-        if (operationFee < 0.0) {
-            throw new IllegalArgumentException("Invalid negative fee");
-        }
+        checkPositiveValue(operationFee);
         this.operationFee = operationFee;
     }
 
-    @Override
     public double getInterestRate() {
         return interestRate;
     }
 
-    @Override
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
     }
 
     @Override
-    public void deposit(double amount) {
-        balance += amount;
+    public void applyFee() {
+        balance -= operationFee;
     }
 
     @Override
-    public double withdraw(double amount) {
-        balance -= amount;
-        return amount;
+    public void addInterest() {
+        balance += balance * interestRate;
     }
 
     @Override
@@ -79,12 +71,15 @@ public abstract class AbstractBankAccount implements BankAccount {
     }
 
     @Override
-    public void addInterest() {
-        balance += balance * interestRate;
+    public double withdraw(double amount) {
+        checkPositiveValue(amount);
+        balance -= amount;
+        return amount;
     }
 
     @Override
-    public void applyFee() {
-        balance -= operationFee;
+    public void deposit(double amount) {
+        checkPositiveValue(amount);
+        balance += amount;
     }
 }

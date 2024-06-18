@@ -20,5 +20,4 @@ public class CheckAnagrams {
 
         return s1.equals(s2);
     }
-
 }

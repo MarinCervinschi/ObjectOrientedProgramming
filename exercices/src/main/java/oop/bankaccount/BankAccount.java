@@ -1,6 +1,20 @@
 package oop.bankaccount;
 
 public interface BankAccount {
+    static void checkIBAN(String IBAN) {
+        if (IBAN.length() < 8 || IBAN.length() > 32) {
+            throw new IllegalArgumentException("Not good");
+        }
+
+        if (!Character.isLetter(IBAN.charAt(0)) || !Character.isLetter(IBAN.charAt(1))) {
+            throw new IllegalArgumentException("Not good");
+        }
+
+        if (!Character.isUpperCase(IBAN.charAt(0)) || !Character.isUpperCase(IBAN.charAt(1))) {
+            throw new IllegalArgumentException("Not good");
+        }
+    }
+
     String getIBAN();
 
     void setIBAN(String IBAN);
@@ -26,16 +40,4 @@ public interface BankAccount {
     void addInterest();
 
     void applyFee();
-    static void checkIBAN(String IBAN) {
-        if (IBAN.length() < 8 || IBAN.length() > 34) {
-            throw new IllegalArgumentException("Invalid length");
-        }
-        String countryCode = IBAN.substring(0, 2);
-        if (!(Character.isLetter(countryCode.charAt(0)) && Character.isLetter(countryCode.charAt(1)))) {
-            throw new IllegalArgumentException("Invalid country code");
-        }
-        if (!(Character.isUpperCase(countryCode.charAt(0)) && Character.isUpperCase(countryCode.charAt(1)))) {
-            throw new IllegalArgumentException("Invalid country code");
-        }
-    }
 }

@@ -6,34 +6,16 @@ public class Person {
     private String lastname;
     private String name;
     private String phone;
-    public Person(String name, String lastname, String phone) {
-        setLastname(lastname);
-        setName(name);
-        setPhone(phone);
-    }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setLastname(String lastname) {
+    public Person(String lastname, String name, String phone) {
         this.lastname = lastname;
-    }
-
-    public void setName(String name) {
         this.name = name;
+        this.phone = phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    @Override
+    public String toString() {
+        return "Person{" + "lastname='" + lastname + '\'' + ", name='" + name + '\'' + ", phone='" + phone + '\'' + '}';
     }
 
     @Override
@@ -49,12 +31,27 @@ public class Person {
         return Objects.hash(lastname, name, phone);
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-                "lastname='" + lastname + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

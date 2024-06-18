@@ -4,20 +4,23 @@ public class BankAccountEasy extends AbstractBankAccount {
     public BankAccountEasy(String IBAN, double balance) {
         super(IBAN, balance, 0, 0);
     }
-    @Override
-    public double transfer(BankAccount other, double amount) {
-        String CountryCodeSrc = IBAN.substring(0, 2);
-        String CountryCodeDst = other.getIBAN().substring(0, 2);
-        if (!CountryCodeSrc.equals(CountryCodeDst)) {
-            throw new IllegalArgumentException("International transfers invalid");
-        }
-        double allowedAmount = withdraw(amount);
-        other.deposit(allowedAmount);
-        return allowedAmount;
-    }
+
     @Override
     public double withdraw(double amount) {
-        double allowedAmount = Math.min(amount, balance);
-        return super.withdraw(allowedAmount);
+        double out = Math.min(amount, balance);
+        return super.withdraw(out);
+    }
+
+    @Override
+    public double transfer(BankAccount other, double amount) {
+        String src = IBAN.substring(0, 2);
+        String dst = other.getIBAN().substring(0, 2);
+        if (!src.equals(dst)) {
+            throw new IllegalArgumentException("Not good");
+        }
+        double out = withdraw(amount);
+        other.deposit(out);
+        return out;
+
     }
 }
