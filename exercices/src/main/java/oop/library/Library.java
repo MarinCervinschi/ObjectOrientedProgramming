@@ -2,26 +2,28 @@ package oop.library;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class Library {
-    ArrayList<Rent> rents = new ArrayList<>();
-    public boolean addRent(Rent rent) {
-        rents.add(rent);
-        return rents.contains(rent);
+    ArrayList<Rent> rents;
+
+    public Library() {
+        this.rents = new ArrayList<>();
     }
 
-    public boolean removeRent(Rent rent) {
-        rents.remove(rent);
+    public boolean addRent(Rent rent) {
+        if (rents.contains(rent)) return false;
+        rents.add(rent);
         return true;
     }
 
-    public ArrayList<Rent> getExpired(LocalDate now) {
-        ArrayList<Rent> ans = new ArrayList<>();
-        for (Rent rent : rents) {
-            if (rent.isExpired(now)) {
-                ans.add(rent);
-            }
-        }
-        return ans;
+    public boolean removeRent(Rent rent) {
+        return rents.remove(rent);
+    }
+
+    ArrayList<Rent> getExpired(LocalDate date) {
+        return rents.stream().filter(rent -> rent.isExpired(date))
+                .collect(Collectors
+                        .toCollection(ArrayList<Rent>::new));
     }
 }

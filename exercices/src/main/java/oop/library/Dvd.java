@@ -1,17 +1,12 @@
 package oop.library;
 
-public class Dvd extends Item{
+import java.util.Objects;
+
+public class Dvd extends Item {
     int length;
+
     public Dvd(String title, int year, int length) {
         super(title, year);
-        this.length = length;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
         this.length = length;
     }
 
@@ -22,5 +17,26 @@ public class Dvd extends Item{
                 ", title='" + title + '\'' +
                 ", year=" + year +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Dvd dvd = (Dvd) o;
+        return length == dvd.length;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(length);
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 }

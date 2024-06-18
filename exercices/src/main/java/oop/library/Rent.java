@@ -4,15 +4,54 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Rent {
-    LocalDate begin;
-    LocalDate end;
     Item item;
     Person person;
+    LocalDate begin;
+    LocalDate end;
 
     public Rent(Item item, Person person, LocalDate begin, LocalDate end) {
+        this.item = item;
+        this.person = person;
         this.begin = begin;
         this.end = end;
+    }
+
+    @Override
+    public String toString() {
+        return "Rent{" +
+                "item=" + item +
+                ", person=" + person +
+                ", begin=" + begin +
+                ", end=" + end +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rent rent = (Rent) o;
+        return Objects.equals(item, rent.item) && Objects.equals(person, rent.person) && Objects.equals(begin, rent.begin) && Objects.equals(end, rent.end);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(item, person, begin, end);
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
         this.item = item;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
         this.person = person;
     }
 
@@ -32,46 +71,7 @@ public class Rent {
         this.end = end;
     }
 
-    public Item getItem() {
-        return item;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public boolean isExpired(LocalDate now) {
-        return now.isAfter(end);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Rent rent = (Rent) o;
-        return Objects.equals(begin, rent.begin) && Objects.equals(end, rent.end) && Objects.equals(item, rent.item) && Objects.equals(person, rent.person);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(begin, end, item, person);
-    }
-
-    @Override
-    public String toString() {
-        return "Rent{" +
-                "begin=" + begin +
-                ", end=" + end +
-                ", item=" + item +
-                ", person=" + person +
-                '}';
+    public boolean isExpired(LocalDate date) {
+        return end.isBefore(date);
     }
 }

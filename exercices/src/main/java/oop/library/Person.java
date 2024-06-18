@@ -7,10 +7,32 @@ public class Person {
     String lastname;
     String name;
 
-    public Person(String name, String lastname, String id) {
-        this.name = name;
-        this.lastname = lastname;
+    public Person(String id, String name, String lastname) {
         this.id = id;
+        this.lastname = lastname;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) && Objects.equals(lastname, person.lastname) && Objects.equals(name, person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, lastname, name);
     }
 
     public String getId() {
@@ -35,27 +57,5 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(lastname, person.lastname) && Objects.equals(name, person.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, lastname, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "id='" + id + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", name='" + name + '\'' +
-                '}';
     }
 }
