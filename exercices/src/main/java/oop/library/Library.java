@@ -21,7 +21,7 @@ public class Library {
         return rents.remove(rent);
     }
 
-    ArrayList<Rent> getExpired(LocalDate date) {
+    public ArrayList<Rent> getExpired(LocalDate date) {
         return rents.stream().filter(rent -> rent.isExpired(date))
                 .collect(Collectors
                         .toCollection(ArrayList<Rent>::new));
