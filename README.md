@@ -4,7 +4,7 @@
 
 # ObjectOrientedProgramming
 Intermediate course introducing Object-Oriented Programming (OOP) principles with the Java language.
-
+It covers the evolution of programming languages, the limitations of procedural programming, and the key features of OOP. The course includes various modules that delve into the basics of Java, object-oriented design, data structures, generics, functional programming, exceptions, and multi-threading. Each module is accompanied by practical lab exercises to reinforce the concepts learned.
 ## Credits
 * **Course:** Object-Oriented Programming (https://github.com/nbicocchi/learn-java-core)
 * **Professor:** Prof. Nicola Bicocchi
