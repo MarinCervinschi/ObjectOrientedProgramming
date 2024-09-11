@@ -3,7 +3,12 @@
 </div>
 
 # ObjectOrientedProgramming
- Intermediate course introducing Object-Oriented Programming (OOP) principles with the Java language.
+Intermediate course introducing Object-Oriented Programming (OOP) principles with the Java language.
+
+## Credits
+* **Course:** Object-Oriented Programming (https://github.com/nbicocchi/learn-java-core)
+* **Professor:** Prof. Nicola Bicocchi
+
 
 ### Software
 
